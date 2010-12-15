@@ -1,0 +1,16 @@
+pseudo_random_key generates pseudo random surrogate keys for a model using the
+Blowfish block cipher and a PostgreSQL sequence generator. The generated keys
+will not repeat any value through the entire cycle of the sequence generator.
+
+You should create an initializer in config/initializers/pseudo_random_key.rb:
+
+  PseudoRandomKey.init("0123456789ABCDEF") # and change this secret!
+
+Then you should declare pseudo_random_key in your model:
+
+  class MyModel < ActiveRecord::Base
+    pseudo_random_key
+  end
+
+The Blowfish cipher uses a 64-bit block size, so the generated surrogate keys
+(and foreign keys that reference the surrogate keys) will be 64 bits.
