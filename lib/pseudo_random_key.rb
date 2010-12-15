@@ -31,7 +31,10 @@ module PseudoRandomKey
 
     # returns next pseudo random key.
     def next_pseudo_random_key_id
-      encrypt_integer(next_pseudo_random_key_sequence_value)
+      while true
+        id = encrypt_integer(next_pseudo_random_key_sequence_value)
+        return id unless id < 0
+      end
     end
   end
 end

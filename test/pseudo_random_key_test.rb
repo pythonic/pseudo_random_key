@@ -58,8 +58,8 @@ class PseudoRandomKeyTest < Test::Unit::TestCase
 
   def test_next_pseudo_random_key_id
     with_sequence do
-      assert_equal -433612404161991616, PseudoRandomKey.next_pseudo_random_key_id
-      assert_equal -1669523999903971977, PseudoRandomKey.next_pseudo_random_key_id
+      assert_equal 6647456405651490659, PseudoRandomKey.next_pseudo_random_key_id
+      assert_equal 7797065249773075692, PseudoRandomKey.next_pseudo_random_key_id
     end
   end
 
@@ -67,18 +67,18 @@ class PseudoRandomKeyTest < Test::Unit::TestCase
     object = PseudoRandomKeyTestObject.new
     with_sequence do
       object.set_pseudo_random_key
-      assert_equal -433612404161991616, object.id
+      assert_equal 6647456405651490659, object.id
       object.set_pseudo_random_key
-      assert_equal -1669523999903971977, object.id
+      assert_equal 7797065249773075692, object.id
     end
   end
 
   def test_pseudo_random_key
     with_sequence do
       object = PseudoRandomKeyTestObject.create
-      assert_equal -433612404161991616, object.id
+      assert_equal 6647456405651490659, object.id
       object = PseudoRandomKeyTestObject.create
-      assert_equal -1669523999903971977, object.id
+      assert_equal 7797065249773075692, object.id
     end
   end
 end
