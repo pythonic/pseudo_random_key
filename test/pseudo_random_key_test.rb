@@ -51,8 +51,10 @@ class PseudoRandomKeyTest < Test::Unit::TestCase
 
   def test_next_pseudo_random_key_sequence_value
     with_sequence do
-      assert_equal -9223372036854775808, PseudoRandomKey.next_pseudo_random_key_sequence_value
-      assert_equal -9223372036854775807, PseudoRandomKey.next_pseudo_random_key_sequence_value
+      ActiveRecord::Base.cache do
+        assert_equal -9223372036854775808, PseudoRandomKey.next_pseudo_random_key_sequence_value
+        assert_equal -9223372036854775807, PseudoRandomKey.next_pseudo_random_key_sequence_value
+      end
     end
   end
 

@@ -26,7 +26,9 @@ module PseudoRandomKey
 
     # returns next value from PostgreSQL sequence generator.
     def next_pseudo_random_key_sequence_value
-      ActiveRecord::Base.connection.select_value(%(SELECT nextval('pseudo_random_key_sequence');)).to_i
+      ActiveRecord::Base.uncached do
+        ActiveRecord::Base.connection.select_value(%(SELECT nextval('pseudo_random_key_sequence');)).to_i
+      end
     end
 
     # returns next pseudo random key.
